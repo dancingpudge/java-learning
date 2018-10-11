@@ -1,10 +1,12 @@
-package thread;
+package thread.v1;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 /**
- * Created by Liuh on 2016/11/17.
+ *
+ * @author Liuh
+ * @date 2016/11/17
  */
 public class ThreadMain {
     public static void main(String [] args){
@@ -12,8 +14,8 @@ public class ThreadMain {
             final BlockingQueue queue = new ArrayBlockingQueue(10);
             long time1 = System.currentTimeMillis();
             for(int i = 0; i <10000 ;i ++){
-                Thread t1 = new ThreadProducter(queue,i);
-                Thread t2 = new ThreadCustomer(queue);
+                Thread t1 = new Producer(queue,i);
+                Thread t2 = new Customer(queue);
                 t1.start();
                 t2.start();
             }

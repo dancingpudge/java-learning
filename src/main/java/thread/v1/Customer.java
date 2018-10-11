@@ -1,15 +1,18 @@
-package thread;
+package thread.v1;
 
 import java.util.concurrent.BlockingQueue;
 
 /**
- * Created by Liuh on 2016/11/17.
+ *
+ * @author Liuh
+ * @date 2016/11/17
  */
-public class ThreadCustomer extends Thread {
+public class Customer extends Thread {
     BlockingQueue queue;
-    ThreadCustomer(BlockingQueue queue){
+    Customer(BlockingQueue queue){
         this.queue = queue;
     }
+    @Override
     public void run(){
         try {
             queue.take();
