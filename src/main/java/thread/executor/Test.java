@@ -1,4 +1,4 @@
-package executor;
+package thread.executor;
 
 import java.util.concurrent.*;
 import java.util.Date;
@@ -10,8 +10,7 @@ import java.util.ArrayList;
  */
 @SuppressWarnings("unchecked")
 public class Test {
-    public static void main(String[] args) throws ExecutionException,
-            InterruptedException {
+    public static void main(String[] args) throws ExecutionException,InterruptedException {
         System.out.println("----程序开始运行----");
         Date date1 = new Date();
 
@@ -24,7 +23,7 @@ public class Test {
             Callable c = new MyCallable(i + " ");
             // 执行任务并获取Future对象
             Future f = pool.submit(c);
-           // System.out.println(">>>" + f.get().toString());
+            System.out.println(">>>" + f.get().toString());
             list.add(f);
         }
         // 关闭线程池
@@ -37,8 +36,7 @@ public class Test {
         }
 
         Date date2 = new Date();
-        System.out.println("----程序结束运行----，程序运行时间【"
-                + (date2.getTime() - date1.getTime()) + "毫秒】");
+        System.out.println("----程序结束运行----，程序运行时间【"+ (date2.getTime() - date1.getTime()) + "毫秒】");
     }
 }
 
@@ -52,7 +50,7 @@ class MyCallable implements Callable<Object> {
     public Object call() throws Exception {
         System.out.println(">>>" + taskNum + "任务启动");
         Date dateTmp1 = new Date();
-        Thread.sleep(1000);
+        Thread.sleep(10);
         Date dateTmp2 = new Date();
         long time = dateTmp2.getTime() - dateTmp1.getTime();
         System.out.println(">>>" + taskNum + "任务终止");
