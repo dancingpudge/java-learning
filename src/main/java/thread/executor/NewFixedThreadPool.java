@@ -8,18 +8,6 @@ import java.util.concurrent.*;
 import static thread.Constant.SDF;
 
 /**
- * Java通过Executors提供四种线程池，分别为：
- * <p>
- * newCachedThreadPool创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
- * newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
- * newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。
- * newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
- * <p>
- * 优点
- * 重用存在的线程，减少对象创建、消亡的开销，性能佳。
- * 可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。
- * 提供定时执行、定期执行、单线程、并发数控制等功能。
- *
  * @author Liuh
  */
 public class NewFixedThreadPool {
@@ -29,7 +17,24 @@ public class NewFixedThreadPool {
      * 混合型任务  = 视机器配置和复杂度自测而定
      */
     static final int corePoolSize = Runtime.getRuntime().availableProcessors();
-    static ExecutorService executor = Executors.newFixedThreadPool(corePoolSize * 2);
+
+    /**
+     * Java通过Executors提供四种线程池，分别为：
+     * <p>
+     * newCachedThreadPool创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
+     * newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
+     * newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。
+     * newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
+     * <p>
+     * 优点
+     * 重用存在的线程，减少对象创建、消亡的开销，性能佳。
+     * 可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。
+     * 提供定时执行、定期执行、单线程、并发数控制等功
+     */
+    static ExecutorService executor = Executors.newCachedThreadPool();
+    //static ExecutorService executor = Executors.newFixedThreadPool(corePoolSize * 2);
+    // static ExecutorService executor = Executors.newScheduledThreadPool(corePoolSize * 2);
+    // static ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
@@ -37,7 +42,7 @@ public class NewFixedThreadPool {
         methodCountDownLatch(corePoolSize * 2, executor);
 
         //方式二(Future)
-        methodFuture(executor);
+        //methodFuture(executor);
 
         executor.shutdown();
     }
@@ -51,7 +56,7 @@ public class NewFixedThreadPool {
         System.out.println("----CountDownLatch 开始运行----");
         CountDownLatch latch = new CountDownLatch(corePoolSize);
         //使用execute方法
-        for (int i = 0; i < corePoolSize; i++) {
+        for (int i = 0; i < corePoolSize * 3; i++) {
             executor.execute(new Stats("任务" + i, latch));
         }
         latch.await();// 等待所有人任务结束
@@ -89,25 +94,18 @@ public class NewFixedThreadPool {
 
 
 /**
- *
  * Runnable与Callable
- *
- *
+ * <p>
  * 相同点：
- *
- * 两者都是接口；（废话）
+ * 两者都是接口；
  * 两者都可用来编写多线程程序；
  * 两者都需要调用Thread.start()启动线程；
- *
- *
+ * <p>
  * 不同点：
- *
  * 两者最大的不同点是：实现Callable接口的任务线程能返回执行结果；而实现Runnable接口的任务线程不能返回结果；
  * Callable接口的call()方法允许抛出异常；而Runnable接口的run()方法的异常只能在内部消化，不能继续上抛；
- *
- *
+ * <p>
  * 注意点：
- *
  * Callable接口支持返回执行结果，此时需要调用FutureTask.get()方法实现，此方法会阻塞主线程直到获取‘将来’结果；当不调用此方法时，主线程不会阻塞！
  */
 
