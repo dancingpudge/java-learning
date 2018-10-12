@@ -1,11 +1,12 @@
-package thread.executor;
+package demo.thread.executor;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.*;
 
-import static thread.Constant.SDF;
+import static demo.Constant.SDF;
+
 
 /**
  * @author Liuh

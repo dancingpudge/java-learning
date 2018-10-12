@@ -1,4 +1,4 @@
-package thread;
+package demo;
 
 import java.text.SimpleDateFormat;
 

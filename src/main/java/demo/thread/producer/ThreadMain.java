@@ -1,4 +1,4 @@
-package thread.v1;
+package demo.thread.producer;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

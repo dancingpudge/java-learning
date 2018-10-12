@@ -1,4 +1,4 @@
-package thread.daemon;
+package demo.thread.daemon;
 
 /**
  * Main线程结束，其他线程一样可以正常运行
@@ -19,14 +19,14 @@ public class ParentTest {
      * 也就是说，线程其实并不存在互相依赖的关系，一个线程的死亡从理论上来说，不会对其他线程有什么影响。
      */
     public static void main(String[] args) {
-        System.out.println("parent thread begin ");
+        System.out.println("parent demo.thread begin ");
 
         ChildThread t1 = new ChildThread("thread1");
         ChildThread t2 = new ChildThread("thread2");
         t1.start();
         t2.start();
 
-        System.out.println("parent thread over ");
+        System.out.println("parent demo.thread over ");
     }
 }
 

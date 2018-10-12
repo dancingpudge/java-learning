@@ -1,4 +1,4 @@
-package thread.daemon;
+package demo.thread.daemon;
 
 /**
  * Main线程结束，其他线程也可以立刻结束，当且仅当这些子线程都是守护线程。
@@ -13,7 +13,7 @@ package thread.daemon;
  **/
 public class ParentTest2 {
     public static void main(String[] args) {
-        System.out.println("parent thread begin ");
+        System.out.println("parent demo.thread begin ");
 
         ChildThread2 t1 = new ChildThread2("thread1");
         ChildThread2 t2 = new ChildThread2("thread2");
@@ -23,7 +23,7 @@ public class ParentTest2 {
         t1.start();
         t2.start();
 
-        System.out.println("parent thread over ");
+        System.out.println("parent demo.thread over ");
     }
 }
 
