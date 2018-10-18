@@ -43,9 +43,7 @@ public class NewFixedThreadPool {
         methodCountDownLatch(corePoolSize * 2, executor);
 
         //方式二(Future)
-        //methodFuture(executor);
-
-        executor.shutdown();
+        methodFuture(executor);
     }
 
     /**
@@ -91,6 +89,7 @@ public class NewFixedThreadPool {
 
         System.out.println("----Future 程序结束运行----");
     }
+
 }
 
 
