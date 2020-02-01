@@ -5,6 +5,14 @@
   <artifactId>test</artifactId>
   <packaging>war</packaging>
   <version>1.0.0</version>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
   <name>test Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <build>

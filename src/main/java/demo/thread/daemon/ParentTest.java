@@ -1,5 +1,8 @@
 package demo.thread.daemon;
 
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
+
 /**
  * Main线程结束，其他线程一样可以正常运行
  * <p>
@@ -28,7 +31,19 @@ public class ParentTest {
 
         System.out.println("parent demo.thread over ");
     }
+
+    @Test
+    public void jUnit() {
+        System.out.println("parent demo.thread begin ");
+
+        ChildThread t1 = new ChildThread("thread1");
+        ChildThread t2 = new ChildThread("thread2");
+        t1.start();
+        t2.start();
+        System.out.println("parent demo.thread over ");
+    }
 }
+
 
 class ChildThread extends Thread {
     private String name;
