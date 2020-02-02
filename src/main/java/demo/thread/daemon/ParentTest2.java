@@ -8,7 +8,7 @@ package demo.thread.daemon;
  * 反之，如果虚拟机中的线程都是守护线程，那么不管这些线程的死活java虚拟机都会退出。
  * 测试代码如下：
  *
- * @author liuh 【liuh@mail.joyowo.com】
+ * @author liuh
  * @date 2018-10-11 15:25
  **/
 public class ParentTest2 {

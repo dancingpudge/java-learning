@@ -1,4 +1,4 @@
-package demo.algorithm;
+package demo.algorithm.sort;
 
 import java.util.Arrays;
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @author Liuh
  * @date 2016/11/17
  */
-public class SelectSort {
+public class Sort {
     public static void main(String[] args) {
         Select();
         BubbleSort();

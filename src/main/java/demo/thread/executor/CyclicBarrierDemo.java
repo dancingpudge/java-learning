@@ -7,7 +7,7 @@ import java.util.concurrent.*;
  * CyclicBarrier(int parties)和CyclicBarrier(int parties, Runnable barrierAction)
  * 前者只需要声明需要拦截的线程数即可，而后者还需要定义一个等待所有线程到达屏障优先执行的Runnable对象。
  *
- * @author liuh 【liuh@mail.joyowo.com】
+ * @author liuh
  * @date 2018-10-17 11:43
  **/
 public class CyclicBarrierDemo {

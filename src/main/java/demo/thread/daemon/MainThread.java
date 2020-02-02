@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * 测试代码如下：
  *
  *
- * @author liuh 【liuh@mail.joyowo.com】
+ * @author liuh
  * @date 2018-10-11 15:21
  **/
 public class MainThread {

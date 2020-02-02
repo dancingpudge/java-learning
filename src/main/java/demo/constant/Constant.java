@@ -1,11 +1,11 @@
-package demo;
+package demo.constant;
 
 import java.text.SimpleDateFormat;
 
 /**
- * ${DESCRIPTION}
+ * 公用变量
  *
- * @author liuh 【liuh@mail.joyowo.com】
+ * @author liuh
  * @date 2018-10-12 15:19
  **/
 public class Constant {

@@ -1,6 +1,5 @@
 package demo.thread.daemon;
 
-import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * 除此之外，它跟其他非守护线程没有什么不同。
  * 主线程执行结束，其他线程一样可以正常执行。代码如下：
  *
- * @author liuh 【liuh@mail.joyowo.com】
+ * @author liuh
  * @date 2018-10-11 15:22
  **/
 public class ParentTest {
