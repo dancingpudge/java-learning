@@ -1,6 +1,5 @@
 package demo.thread.daemon;
 
-import org.junit.jupiter.api.Test;
 
 /**
  * Main线程是个非守护线程，不能设置成守护线程
@@ -21,8 +20,4 @@ public class MainThread {
         Thread.currentThread().setDaemon(true);
     }
 
-    @Test
-    public void jUnit() {
-        Thread.currentThread().setDaemon(true);
-    }
 }
