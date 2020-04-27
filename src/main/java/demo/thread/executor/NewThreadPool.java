@@ -11,7 +11,7 @@ import static demo.constant.Constant.SDF;
 /**
  * @author Liuh
  */
-public class NewFixedThreadPool {
+public class NewThreadPool {
     /**
      * IO密集型任务  = 一般为2*CPU核心数（常出现于线程中：数据库数据交互、文件上传下载、网络数据传输等等）
      * CPU密集型任务 = 一般为CPU核心数+1（常出现于线程中：复杂算法）
@@ -19,23 +19,14 @@ public class NewFixedThreadPool {
      */
     static final int corePoolSize = Runtime.getRuntime().availableProcessors();
 
-    /**
-     * Java通过Executors提供四种线程池，分别为：
-     * <p>
-     * newCachedThreadPool创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
-     * newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
-     * newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。
-     * newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
-     * <p>
-     * 优点
-     * 重用存在的线程，减少对象创建、消亡的开销，性能佳。
-     * 可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。
-     * 提供定时执行、定期执行、单线程、并发数控制等功
-     */
-    static ExecutorService executor = Executors.newCachedThreadPool();
-    //static ExecutorService executor = Executors.newFixedThreadPool(corePoolSize * 2);
-    // static ExecutorService executor = Executors.newScheduledThreadPool(corePoolSize * 2);
-    // static ExecutorService executor = Executors.newSingleThreadExecutor();
+    static ExecutorService executor = new ThreadPoolExecutor(
+            0,
+            corePoolSize + 1,
+            1,
+            TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(3),
+            new ThreadPoolExecutor.DiscardPolicy()
+    );
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
@@ -138,6 +129,7 @@ class MyCallable implements Callable<Object> {
         this.taskNum = taskNum;
     }
 
+    @Override
     public Object call() throws Exception {
         System.out.println(taskNum + " do stats begin at " + SDF.format(new Date()));
         Thread.sleep(1000);
