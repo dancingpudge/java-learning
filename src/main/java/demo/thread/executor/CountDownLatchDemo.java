@@ -11,7 +11,7 @@ import static demo.constant.Constant.SDF;
 /**
  * @author Liuh
  */
-public class NewThreadPool {
+public class CountDownLatchDemo {
     /**
      * IO密集型任务  = 一般为2*CPU核心数（常出现于线程中：数据库数据交互、文件上传下载、网络数据传输等等）
      * CPU密集型任务 = 一般为CPU核心数+1（常出现于线程中：复杂算法）
@@ -109,15 +109,17 @@ class Stats implements Runnable {
         this.latch = latch;
     }
 
+    @Override
     public void run() {
         try {
             System.out.println(statsName + " do stats begin at " + SDF.format(new Date()));
             Thread.sleep(1000);
             System.out.println(statsName + " do stats complete at " + SDF.format(new Date()));
             //单次任务结束，计数器减一
-            latch.countDown();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            latch.countDown();
         }
     }
 }

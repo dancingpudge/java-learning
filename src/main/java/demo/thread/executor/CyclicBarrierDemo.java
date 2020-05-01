@@ -11,19 +11,15 @@ import java.util.concurrent.*;
  * @date 2018-10-17 11:43
  **/
 public class CyclicBarrierDemo {
-    private static final ThreadPoolExecutor threadPool = new ThreadPoolExecutor(4, 10, 60, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+    private static final ThreadPoolExecutor threadPool = new ThreadPoolExecutor(4, 10, 6, TimeUnit.SECONDS, new LinkedBlockingQueue<>(2));
     /**
      * 当拦截线程数达到4时，便优先执行barrierAction，然后再执行被拦截的线程。
      */
-    private static final CyclicBarrier cb = new CyclicBarrier(4, new Runnable() {
-        public void run() {
-            System.out.println("寝室四兄弟一起出发去球场");
-        }
-    });
+    private static final CyclicBarrier cb = new CyclicBarrier(4, () -> System.out.println("寝室四兄弟一起出发去球场"));
 
     public static void main(String[] args) {
         String[] str = {"李明", "王强", "刘凯", "赵杰"};
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0, length = str.length; i < length; i++) {
             threadPool.execute(new GoThread(str[i], cb));
         }
         try {
