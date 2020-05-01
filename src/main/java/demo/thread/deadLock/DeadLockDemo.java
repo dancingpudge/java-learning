@@ -55,11 +55,6 @@ public class DeadLockDemo {
                 }
                 synchronized (lock2) {
                     System.out.println(Thread.currentThread().getName() + "======>try to get Lock" + lock2);
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 }
             }
         }
