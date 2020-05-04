@@ -1,6 +1,5 @@
 package demo.thread.condition;
 
-import java.util.Optional;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -20,11 +19,36 @@ public class ConditionDemo {
             this.lock = lock;
             this.condition = condition;
         }
+
         @Override
         public void run() {
             lock.lock();
             try {
-                System.out.println(Thread.currentThread().getName());
+                System.out.println(Thread.currentThread().getName() + "等待");
+                condition.await();
+                System.out.println(Thread.currentThread().getName() + "被唤醒");
+            } catch (Exception e) {
+            } finally {
+                lock.unlock();
+            }
+        }
+    }
+
+    static class thDemo2 implements Runnable {
+        Lock lock;
+        Condition condition;
+
+        public thDemo2(Lock lock, Condition condition) {
+            this.lock = lock;
+            this.condition = condition;
+        }
+
+        @Override
+        public void run() {
+            lock.lock();
+            try {
+                Thread.sleep(100);
+                System.out.println(Thread.currentThread().getName() + "执行完唤醒");
                 condition.signal();
             } catch (Exception e) {
             } finally {
@@ -33,25 +57,12 @@ public class ConditionDemo {
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         Lock lock = new ReentrantLock();
-        Condition condition1 = lock.newCondition();
-        Condition condition2 = lock.newCondition();
-        Condition condition3 = lock.newCondition();
-        for (int i = 0; i < 10; i++) {
-            Thread thread1 = new Thread(new thDemo(lock, condition2));
-            thread1.start();
-            condition1.await();
-
-            Thread thread2 = new Thread(new thDemo(lock, condition3));
-            thread2.start();
-            condition2.await();
-
-            Thread thread3 = new Thread(new thDemo(lock, condition1));
-            thread3.start();
-            condition3.await();
-        }
+        Condition condition = lock.newCondition();
+        new Thread(new thDemo(lock, condition), "th1").start();
+        new Thread(new thDemo2(lock, condition), "th2").start();
     }
 
 }
