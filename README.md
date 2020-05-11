@@ -1,2 +1,2 @@
-# test
-my test program
+# 声明
+此项目攻学习交流使用，不定期更新
