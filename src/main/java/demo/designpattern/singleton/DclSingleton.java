@@ -1,4 +1,4 @@
-package demo.designpattern;
+package demo.designpattern.singleton;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
