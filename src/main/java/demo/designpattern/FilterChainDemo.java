@@ -1,4 +1,4 @@
-package demo.designpattern.responsibilityChain;
+package demo.designpattern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * @Author liuhu
  * @Date 2020/5/13 0:49
  **/
-public class FilterChainMain {
+public class FilterChainDemo {
 
     public static void main(String[] args) {
 
@@ -40,6 +40,37 @@ public class FilterChainMain {
                     return false;
                 }
             }
+            return true;
+        }
+    }
+
+    interface MyFilter {
+        boolean filter();
+    }
+
+    static class MyFilter1 implements MyFilter {
+
+        @Override
+        public boolean filter() {
+            System.out.println(this.getClass().getName() + " do something");
+            return true;
+        }
+    }
+
+    static class MyFilter2 implements MyFilter {
+
+        @Override
+        public boolean filter() {
+            System.out.println(this.getClass().getName() + " do something");
+            return true;
+        }
+    }
+
+    static class MyFilter3 implements MyFilter {
+
+        @Override
+        public boolean filter() {
+            System.out.println(this.getClass().getName() + " do something");
             return true;
         }
     }
