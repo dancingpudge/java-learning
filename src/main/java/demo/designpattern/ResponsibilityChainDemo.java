@@ -8,7 +8,7 @@ import java.util.List;
  * @Author liuhu
  * @Date 2020/5/13 0:49
  **/
-public class FilterChainDemo {
+public class ResponsibilityChainDemo {
 
     public static void main(String[] args) {
 
