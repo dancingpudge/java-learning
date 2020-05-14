@@ -10,11 +10,10 @@ import java.util.LinkedList;
 public class HardDemo {
 
     public static void main(String[] args) {
-        WebFilterChain webFilterChain = new WebFilterChain();
-        webFilterChain
+        WebFilterChain webFilterChain = new WebFilterChain()
                 .setNext(new Filter1())
-                .setNext(new Filter2())
-                .doFilter(webFilterChain, new Request(), new Response());
+                .setNext(new Filter2());
+        webFilterChain.doFilter(webFilterChain, new Request(), new Response());
     }
 
     interface WebFilter {
