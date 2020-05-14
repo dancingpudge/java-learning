@@ -12,18 +12,18 @@ package demo.exception;
  * @date 2020-02-02 15:21
  **/
 
-public class MyException extends Throwable {
+public class Exception extends Throwable {
 
     /**
      * 异常转型
      *
-     * @throws MyException
+     * @throws Exception
      */
-    public void test() throws MyException {
+    public void test() throws Exception {
         try {
             System.out.println("do something ......");
-        } catch (Exception e) {
-            throw new MyException();
+        } catch (java.lang.Exception e) {
+            throw new Exception();
         }
     }
 }

@@ -1,4 +1,4 @@
-package demo.designpattern.reflect;
+package demo.design.pattern.reflect;
 
 import java.lang.reflect.Method;
 

@@ -1,6 +1,6 @@
 package demo.algorithm.sort;
 
-import demo.algorithm.datastructure.linkedList.Node;
+import demo.datastructure.linkedList.Node;
 
 public class LinkedListSort {
     public static void main(String[] args) {

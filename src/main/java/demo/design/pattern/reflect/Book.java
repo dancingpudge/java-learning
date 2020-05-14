@@ -1,4 +1,4 @@
-package demo.designpattern.reflect;
+package demo.design.pattern.reflect;
 
 public class Book {
     private static String name;

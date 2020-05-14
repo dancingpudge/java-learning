@@ -1,4 +1,4 @@
-package demo.designpattern.responsibility.chain;
+package demo.design.pattern.responsibility.chain;
 
 import java.util.LinkedList;
 

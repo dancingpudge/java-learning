@@ -1,4 +1,4 @@
-package demo.algorithm.datastructure.linkedList;
+package demo.datastructure.linkedList;
 
 /**
  * @Description //TODO
