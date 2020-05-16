@@ -52,5 +52,22 @@ public class MapAndFlatMap {
         System.out.println("List of all Players using Java 8");
         System.out.println(flatMapList);
         System.out.println(flatMapList.size());
+
+
+    }
+
+    public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<>();
+        if (n == 1) {
+            res.add("()");
+            return res;
+        }else{
+            for(String s: generateParenthesis(n-1)){
+                res.add("()"+s);
+                res.add(s+"()");
+                res.add("("+s+")");
+            }
+        }
+        return res.stream().distinct().collect(Collectors.toList());
     }
 }
