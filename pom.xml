@@ -23,6 +23,18 @@
             <artifactId>commons-net</artifactId>
             <version>2.0</version>
         </dependency>
+        <dependency>
+            <groupId>co.paralleluniverse</groupId>
+            <artifactId>quasar-core</artifactId>
+            <version>0.7.9</version>
+            <classifier>jdk8</classifier>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -30,9 +42,6 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources/${profiles.active}</directory>
             </resource>
         </resources>
         <plugins>
@@ -87,22 +96,6 @@
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>
-            <!-- 打包source文件为jar文件 -->
-            <plugin>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
