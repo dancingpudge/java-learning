@@ -3,4 +3,4 @@
 *.class
 .idea
 *.iml
-doc/Log
+doc/Log/*
