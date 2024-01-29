@@ -1,0 +1,1 @@
+[ULID规范解读与实现原理](https://www.cnblogs.com/throwable/p/16801110.html)
