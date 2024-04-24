@@ -4,7 +4,6 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.*;
-import java.util.Arrays;
 
 /**
  * @author: LiuH
@@ -34,11 +33,9 @@ public class FtpTest {
 
             // 设置被动模式（可选，根据服务器要求调整）
             ftpClient.enterLocalPassiveMode();
-            System.out.println(Arrays.stream(ftpClient.listFiles("/data/rfftp/dcharger.bin")).findAny().get().getName());
-            System.out.println(Arrays.stream(ftpClient.listFiles("/data/rfftp")).findAny().get().getName());
 
             //
-            //downloadFile(ftpClient, "/data/rfftp/dcharger.bin", new File("/Users/liuhui/work-space/gitee/java-learning/src/main/java/demo/ftp/dcharger.bin"));
+            downloadFile(ftpClient, "/data/rfftp/dcharger.bin", new File("dcharger.bin"));
 
             // 断开连接
             ftpClient.logout();
