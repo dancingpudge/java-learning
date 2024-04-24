@@ -16,8 +16,8 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Slf4j
 public class MessagePusher {
 
-    private static final String TOPIC = "从配置中获取";
-    private static final String QUEUE_NAME = "从配置中获取";
+    private static final String TOPIC = "建议从配置中获取";
+    private static final String QUEUE_NAME = "建议从配置中获取";
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final RBlockingDeque rBlockingDeque;
 
