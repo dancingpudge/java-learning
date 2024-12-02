@@ -16,7 +16,7 @@
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <!-- same version with the zookeeper-->
-            <version>3.4.13</version>
+            <version>3.7.2</version>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
