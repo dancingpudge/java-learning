@@ -73,6 +73,13 @@
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.groupdocs</groupId>
+            <artifactId>groupdocs-parser</artifactId>
+            <version>24.6</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/groupdocs-parser-24.6.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
