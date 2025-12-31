@@ -1,3 +1,4 @@
+/*
 package com.shark.demo.rabbit;
 
 import com.alibaba.fastjson.JSONObject;
@@ -7,10 +8,12 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.net.InetAddress;
 
+*/
 /**
  * @author: LiuH
  * @date: 2024/4/26 16:33
- */
+ *//*
+
 public class SubscribeClient {
     private static final String hostUrl = "tcp://{domain}:{port}";
     private static final String MQTT_TOPIC = "topic/#";
@@ -20,9 +23,11 @@ public class SubscribeClient {
 
 
 
-    /**
+    */
+/**
      * 客户端连接服务端
-     */
+     *//*
+
     public static void connect() {
         try {
             InetAddress addr = InetAddress.getLocalHost();
@@ -97,3 +102,4 @@ public class SubscribeClient {
     }
 
 }
+*/
